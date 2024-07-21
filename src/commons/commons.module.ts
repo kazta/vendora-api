@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { databaseProviders } from './application/implementations/PostgresqlDatabase';
+import { databaseProviders } from './application/implementations/postgresql.database';
 
 @Module({
   imports: [],
