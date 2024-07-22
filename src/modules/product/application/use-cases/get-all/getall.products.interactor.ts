@@ -10,8 +10,10 @@ export class GetAllProuctsInteractor implements GetAllProuctsInputPort {
   constructor(
     @Inject(PRODUCT_REPPOSITORY) private repository: Repository<Product>
   ) {}
-  Handle(): Promise<ProductDto[]> {
-    const products = this.repository.find();
+  async Handle(): Promise<ProductDto[]> {
+    const products = (await this.repository.find()).map(x =>
+      ProductDto.fromEntity(x)
+    );
     return products;
   }
 }
